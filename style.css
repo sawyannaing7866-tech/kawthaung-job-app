@@ -1,0 +1,63 @@
+body, html { 
+    margin: 0; 
+    padding: 0; 
+    width: 100%; 
+    height: 100%; 
+    overflow: hidden; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background-color: #0b0c10;
+}
+
+/* Google Sheet ကို အပေါ်ပိုင်းတွင် အပြည့်ပြသခြင်း */
+.webview-frame { 
+    width: 100%; 
+    height: 82%; 
+    border: none; 
+}
+
+/* အောက်ခြေအပိုင်းကို ပိုမိုခန့်ညားသော Dark Metallic Theme ပေးခြင်း */
+.bottom-container { 
+    position: fixed; 
+    bottom: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 18%; 
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-top: 3px solid #00dfa2; /* ကော့သောင်း Job အတွက် စိမ်းပြာရောင် Theme */
+}
+
+/* ကော့သောင်း Job စာသားကို Glow ဖြစ်စေသော အထူး Effect */
+.glow-text { 
+    color: #fff; 
+    text-shadow: 0 0 8px #00dfa2, 0 0 15px #00dfa2; 
+    font-size: 16px; 
+    margin: 0 0 12px 0; 
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+/* Admin ခလုတ်ကို ပိုမိုဆွဲဆောင်မှုရှိစေသော ဒီဇိုင်းနှင့် တုန်ခါမှု Animation */
+.owner-btn { 
+    display: inline-block; 
+    background: linear-gradient(45deg, #00dfa2, #007bf5); 
+    color: white; 
+    padding: 12px 35px; 
+    border-radius: 50px; 
+    text-decoration: none; 
+    font-weight: bold; 
+    font-size: 13px;
+    box-shadow: 0 4px 20px rgba(0, 223, 162, 0.4); 
+    transition: 0.3s ease;
+    animation: bouncePulse 2.5s infinite; 
+}
+
+@keyframes bouncePulse {
+    0% { transform: scale(1); box-shadow: 0 4px 20px rgba(0, 223, 162, 0.4); }
+    50% { transform: scale(1.04); box-shadow: 0 4px 30px rgba(0, 223, 162, 0.8); }
+    100% { transform: scale(1); box-shadow: 0 4px 20px rgba(0, 223, 162, 0.4); }
+}
