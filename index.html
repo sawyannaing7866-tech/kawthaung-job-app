@@ -5,30 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kawthaung Job</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Cordova စနစ်ကို ချိတ်ဆက်ခြင်း -->
-    <script src="cordova.js"></script>
+    <!-- လုံခြုံရေးစနစ်များကို App အတွင်း ခွင့်ပြုပေးရန် သတ်မှတ်ခြင်း -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src * data: content:;">
 </head>
 <body>
 
-    <!-- Error တက်နေသော iFrame ကို ဖယ်ထုတ်ပြီး နေရာလွတ် ချန်ထားခြင်း -->
-    <div id="app-content" style="width:100%; height:82%;"></div>
+    <!-- Google Sheet တိုက်ရိုက်ပွင့်စေရန် သီးသန့် Embed Embedded လင့်ခ်အမှန် -->
+    <iframe src="https://google.com" class="webview-frame" allow="autoplay"></iframe>
 
+    <!-- အောက်ခြေ ဒီဇိုင်းပိုင်း ကွန်တိန်နာ -->
     <div class="bottom-container">
         <h3 class="glow-text">📍 KAWTHAUNG JOB HUB 📍</h3>
+        
+        <!-- Facebook App သို့ တိုက်ရိုက်ဆက်သွယ်မည့် ခလုတ် -->
         <a href="fb://facewebmodal/fblink?path=https://facebook.com" class="owner-btn" target="_blank">
             🤝 CONTACT ADMIN (JOB INQUIRY)
         </a>
     </div>
-
-    <script>
-        // App ပွင့်ပွင့်ခြင်း Google Sheet ကို Error ကင်းကင်းဖြင့် Embedded ဆွဲဖွင့်မည့်စနစ်
-        document.addEventListener('deviceready', function() {
-            var targetUrl = "https://google.com";
-            
-            // InAppBrowser ကို သုံး၍ iFrame Error ကို ကျော်ဖြတ်ခြင်း
-            var ref = cordova.InAppBrowser.open(targetUrl, '_self', 'location=no,zoom=no');
-        }, false);
-    </script>
 
 </body>
 </html>
