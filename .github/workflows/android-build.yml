@@ -21,12 +21,12 @@ jobs:
           cordova create myapp com.kawthaung.job "Kawthaung Job"
           cd myapp
           cordova platform add android
-          cordova plugin add cordova-plugin-inappbrowser
           rm -rf www/*
       - name: Copy Files
         run: |
           cp index.html myapp/www/
           cp style.css myapp/www/
+          cp config.xml myapp/config.xml
       - name: Build APK
         run: |
           cd myapp
@@ -36,3 +36,4 @@ jobs:
         with:
           name: app-debug
           path: myapp/platforms/android/app/build/outputs/apk/debug/app-debug.apk
+          
