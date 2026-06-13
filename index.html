@@ -5,23 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kawthaung Job</title>
     <link rel="stylesheet" href="style.css">
-    <!-- လုံခြုံရေးစနစ်များကို App အတွင်း ခွင့်ပြုပေးရန် သတ်မှတ်ခြင်း -->
-    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src * data: content:;">
 </head>
 <body>
 
-    <!-- Google Sheet တိုက်ရိုက်ပွင့်စေရန် သီးသန့် Embed Embedded လင့်ခ်အမှန် -->
-    <iframe src="https://google.com" class="webview-frame" allow="autoplay"></iframe>
+    <!-- App ၏ ခေါင်းစဉ်ပိုင်း ဒီဇိုင်း -->
+    <div class="app-header">
+        <h2>📋 KAWTHAUNG JOB LIST</h2>
+    </div>
+
+    <!-- Google Sheet ဒေတာများကို ဇယားကွက်အလန်းစားဖြင့် တိုက်ရိုက်ဆွဲပြမည့် နေရာ -->
+    <div id="job-table-container">
+        <p class="loading-text">⌛ Job Data များကို ရယူနေပါသည်...</p>
+    </div>
 
     <!-- အောက်ခြေ ဒီဇိုင်းပိုင်း ကွန်တိန်နာ -->
     <div class="bottom-container">
         <h3 class="glow-text">📍 KAWTHAUNG JOB HUB 📍</h3>
-        
-        <!-- Facebook App သို့ တိုက်ရိုက်ဆက်သွယ်မည့် ခလုတ် -->
         <a href="fb://facewebmodal/fblink?path=https://facebook.com" class="owner-btn" target="_blank">
             🤝 CONTACT ADMIN (JOB INQUIRY)
         </a>
     </div>
+
+    <script>
+        // Google Sheet CSV API မှတစ်ဆင့် ဒေတာများကို သေချာပေါက် ဆွဲယူသည့် စနစ်
+        const sheetUrl = "https://google.com";
+
+        async function fetchSheetData() {
+            try {
+                const response = await fetch(sheetUrl);
+                const text = await response.text();
+                
+                // ရလာသော HTML ဒေတာထဲမှ Table အပိုင်းကို သီးသန့်ဆွဲထုတ်ခြင်း
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(text, 'text/html');
+                const table = doc.querySelector('table');
+                
+                if(table) {
+                    table.setAttribute('class', 'custom-job-table');
+                    document.getElementById('job-table-container').innerHTML = "";
+                    document.getElementById('job-table-container').appendChild(table);
+                } else {
+                    document.getElementById('job-table-container').innerHTML = "<p class='error-text'>❌ ဒေတာ ဇယားကွက် မတွေ့ရှိပါ။</p>";
+                }
+            } catch (error) {
+                document.getElementById('job-table-container').innerHTML = "<p class='error-text'>❌ အင်တာနက်လိုင်း ချိတ်ဆက်မှုကို စစ်ဆေးပါ၊</p>";
+            }
+        }
+
+        // App ပွင့်သည်နှင့် ဒေတာကို တန်းခေါ်ခြင်း
+        window.onload = fetchSheetData;
+    </script>
 
 </body>
 </html>
