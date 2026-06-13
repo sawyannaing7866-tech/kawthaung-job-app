@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.kawthaung.job" version="1.0.0" xmlns="http://w3.org" xmlns:cdv="http://apache.org">
+    <name>Kawthaung Job</name>
+    <description>Kawthaung Job Hub Application</description>
+    <author email="admin@kawthaung.com" href="http://cordova.io">Kawthaung Job Team</author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-navigation href="https://google.com*" />
+    <allow-navigation href="*" />
+    <preference name="Fullscreen" value="false" />
+    <preference name="WebViewRules" value="https://google.com* ALLOW" />
+</widget>
