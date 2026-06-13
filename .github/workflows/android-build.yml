@@ -1,1 +1,38 @@
-
+name: Build Android APK
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'zulu'
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install Cordova
+        run: npm install -g cordova
+      - name: Create Cordova Project
+        run: |
+          cordova create myapp com.kawthaung.job "Kawthaung Job"
+          cd myapp
+          cordova platform add android
+          rm -rf www/*
+      - name: Copy Files
+        run: |
+          cp index.html myapp/www/
+          cp style.css myapp/www/
+      - name: Build APK
+        run: |
+          cd myapp
+          cordova build android --debug
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-debug
+          path: myapp/platforms/android/app/build/outputs/apk/debug/app-debug.apk
+          
