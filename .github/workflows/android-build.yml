@@ -21,6 +21,7 @@ jobs:
           cordova create myapp com.kawthaung.job "Kawthaung Job"
           cd myapp
           cordova platform add android
+          cordova plugin add cordova-plugin-inappbrowser
           rm -rf www/*
       - name: Copy Files
         run: |
